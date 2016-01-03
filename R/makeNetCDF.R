@@ -108,7 +108,7 @@ makeNetCDF <- function (d, newNetCDFname) {
       if ("tzone" == aname) {next}
       if ("actual_range" == aname) {next}
       if ("_FillValue" == aname) {
-        ncatt_put (nc, V, attname=aname, attval=as.double(ATT), definemode=TRUE)
+        ncatt_put (nc, V, attname=aname, attval=as.single(ATT), definemode=TRUE)
       } else {
         avalue <- as.character (ATT)
         ncatt_put (nc, V, attname=aname, attval=avalue, definemode=TRUE)
