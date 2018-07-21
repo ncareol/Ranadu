@@ -40,7 +40,7 @@
 
 plotWAC <- function (x, y=NA, col="blue", xlab="TIME [UTC]", 
                      ylab="", lwd=2, type="l", lty=1, logxy='', pch=20, cex=1, 
-                     legend.position="bottomright", ...) {
+                     legend.position="bottomleft",bg="transparent", ...) {
   par(cex.axis=2, cex.lab=2) # This line bumps up font sizes for axes
   if (is.data.frame (x)) {
     if (!is.expression(ylab) && (ylab == "")) {
@@ -95,6 +95,9 @@ plotWAC <- function (x, y=NA, col="blue", xlab="TIME [UTC]",
           as.expression(bquote(10^ .(i)))
       )
     }
+   # Grid lines
+    grid()
+    
    # Color palette must be defined for the legend labeling to work
      colrs<-c(col, 
              rgb(027,158,119,maxColorValue=255),
@@ -119,7 +122,7 @@ plotWAC <- function (x, y=NA, col="blue", xlab="TIME [UTC]",
     if (!is.na(legend.position)) {
         legend (legend.position, legend=names (x)[2:length(x)], 
                 text.col=colrs[1:(length(x)-1)], lwd=lwd, lty=lty, cex=2, 
-                col=colrs[1:(length(x)-1)])
+                col=colrs[1:(length(x)-1)],bty='n')
     }
     if (!is.expression(xlab)) {
       # get data.rate
